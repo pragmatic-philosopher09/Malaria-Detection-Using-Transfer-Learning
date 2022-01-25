@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="styles.css">
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+   <link href="{{ url_for('static', filename='css/template.css') }}" rel="stylesheet">
+    <title>Prediction</title>
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">MALARIA</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Hospitals <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Precautions</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Payment Method
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Help me" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+<br>
+
+
+    <div style="text-align: center;">
+      <h1>Hi {{session.Name}} !!</h1>
+      <br>
+      <h2>Upload the chemical smeared image of blood sample</h2>
+    </div>
+    <form action="{{ url_for('predict') }}" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="exampleInputage">Age</label>
+      <input type="number" class="form-control" id="exampleInputage" name="Age" aria-describedby="AgeHelp" placeholder="Enter your Age">
+
+    </div>
+    <div class="form-group">
+      <label for="exampleInputfever">Temperature(in Fahernheit)</label>
+      <input type="number" class="form-control" id="exampleInputCholestrol" name="Temperature" placeholder="Enter your Temperature level">
+    </div>
+
+    <div class="form-group">
+      <label for="exampleInputimage">Upload</label>
+      <input type="file" class="form-control" id="exampleInputHR" name="file" placeholder="image" accept=".png, .jpg, .jpeg" required>
+    </div>
+
+
+
+    <button type="submit" class="btn btn-primary">Predict</button>
+  </form>
+
+  <div style="text-align: center;">
+
+    <div class="msg"><h2>{{ msg }}</h2></div>
+    <a href="{{ url_for('logout') }}" class="btn">Logout</a>
+  </div>
+
+  </body>
+</html>
