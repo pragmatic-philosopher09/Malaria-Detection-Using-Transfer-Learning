@@ -1,1 +1,0 @@
-# Malaria-Detection-Using-Tf
